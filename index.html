@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+
+		<title>AR Model Viewer</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui, shrink-to-fit=no"
+		/>
+
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+
+				padding: 0;
+				margin: 0;
+
+				font-family: Helvetica, Arial, Sans-Serif;
+
+				overflow: hidden;
+			}
+		</style>
+
+		<!--                                                      Import CSS -->
+
+		<link rel="stylesheet" href="model-viewer-wrapper.css" />
+	</head>
+
+	<body>
+		<!--                                              Create DOM Element -->
+		<div id="model-viewer-wrapper" class="model-viewer-wrapper"></div>
+
+		<!--                                              Import Application -->
+		<script src="model-viewer-wrapper.min.js"></script>
+
+		<script type="text/javascript">
+
+			// __________________________________________________________ Loaded
+
+			function onDocumentLoaded() {
+				// Application Container
+				const APPLICATION_CONTAINER = document.getElementById('model-viewer-wrapper');
+
+				// Application Configuration
+				const APPLICATION_CONFIGURATION = {
+					// Required
+					applicationContainer: APPLICATION_CONTAINER,
+
+					// Required
+					modelURL: 'asset/model/frame/model',
+					arTitleLink: 'https://www.samgpu.dev',
+					allowWallPlacement: true,
+					preferGenerateARMeshes: false,
+
+					// Default False
+					isDebug: false,
+					isDebugScreen: false,
+				};
+
+				// Create Application Instance
+				const APPLICTION_INSTANCE = ModelViewerWrapper.create(
+					APPLICATION_CONFIGURATION
+				);
+			}
+
+			document.onload = onDocumentLoaded();
+
+		</script>
+	</body>
+</html>
